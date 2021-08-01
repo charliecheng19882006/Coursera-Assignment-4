@@ -19,12 +19,12 @@ function MenuDataService($http, ApiBasePath) {
     return getCategoriesService;
   };
 
-  service.getItems = function(category) {
+  service.getItems = function(itemShortName) {
     var getItemsService = $http({
         method: "GET",
         url: (ApiBasePath + "/menu_items.json"),
         params: {
-            category: category
+            itemShortName: itemShortName
         }
     }).then(function (response) {
       return response.data;

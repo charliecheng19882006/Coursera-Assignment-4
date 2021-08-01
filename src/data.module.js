@@ -9,17 +9,18 @@ MenuDataService.$inject = ['$http', 'ApiBasePath'];
 function MenuDataService($http, ApiBasePath) {
   var service = this;
 
-  service.getAllCategories = function() {
-    return $http({
+  service.getCategories = function() {
+    var getCategoriesService = $http({
         method: "GET",
         url: (ApiBasePath + "/categories.json")
     }).then(function (response) {
       return response.data;
     });
+    return getCategoriesService;
   };
 
-  service.getItemsForCategory = function(categoryShortName) {
-    return $http({
+  service.getItems = function(categoryShortName) {
+    var getItemsService = $http({
         method: "GET",
         url: (ApiBasePath + "/menu_items.json"),
         params: {
@@ -28,6 +29,7 @@ function MenuDataService($http, ApiBasePath) {
     }).then(function (response) {
       return response.data;
     });
+    return getItemsService;
   };
 }
 
